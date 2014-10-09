@@ -38,6 +38,15 @@ body {
     padding-top: 175px;
 }
 
+.signIn {
+    padding-top: 175px;
+    padding-left: 5%; 
+    padding-right: 5%;
+
+    font-size: 4em;
+    color: black;
+}
+
 .header {
     position: fixed;
     z-index: 1;
