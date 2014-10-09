@@ -83,7 +83,7 @@
     </div>
     <br>
 
-    <div class = "filters container-fluid">
+    <div class = "filters container">
 		<div class = "row row-xs-height">
       <div class = "col-xs-3"></div>
 		  <div class = "col-xs-6 col-xs-height">
@@ -109,7 +109,7 @@
       var createCard = function(a) {$("#target").append(us_temp(a))};
       var ResearchStudy = Parse.Object.extend("ResearchStudy");
       var query = new Parse.Query(ResearchStudy);
-      query.descending("pay");
+      query.descending("datePosted");
       query.find({
               success: function(results) {
                 results.forEach(function(result){
