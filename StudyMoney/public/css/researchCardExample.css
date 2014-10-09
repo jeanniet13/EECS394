@@ -3,6 +3,10 @@
 	padding-right: 5%;
 }
 
+a:hover {
+	text-decoration: none;
+}
+
 .card {
 	max-width: 900px;
 	background-color: white;

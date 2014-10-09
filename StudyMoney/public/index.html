@@ -19,9 +19,9 @@
     <!-- Create your template -->
     <script type="foo/bar" id="studyCard">
     <div class = "cardpadding">
-          <a data-toggle="collapse" href="#collapse<%= objectId %>" class = "card" style = "z-index: 1">
           <div class = "container-fluid card">
-            <div class = "row row-xs-height">
+          <a data-toggle="collapse" href="#collapse<%= objectId %>">
+		  <div class = "row row-xs-height">
               <div class = "col-xs-3 col-xs-height col-middle">
                 <div class = "text-center pricecard">
                   $<%= pay %>
@@ -52,8 +52,8 @@
                 </div>
               </div>
             </div>
-          </div>
           </a>
+          </div>
           <div id="collapse<%= objectId %>" class="collapse" class = "cardinfo">
 			  <div class = "container-fluid cardinfo">
 				<div class = "row row-xs-height">
