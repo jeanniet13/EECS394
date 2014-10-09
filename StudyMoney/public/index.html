@@ -107,7 +107,7 @@
       var createCard = function(a) {$("#target").append(us_temp(a))};
       var ResearchStudy = Parse.Object.extend("ResearchStudy");
       var query = new Parse.Query(ResearchStudy);
-      query.descending("pay");
+      query.descending("datePosted");
       query.find({
               success: function(results) {
                 results.forEach(function(result){
