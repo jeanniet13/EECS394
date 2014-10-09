@@ -7,14 +7,12 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/researchCardExample.css">
-    <link rel="stylesheet" href="css/jquery.mobile-1.4.4.min.css">
 
     <!-- Install jQuery and underscore -->
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
     <script src="https://www.parsecdn.com/js/parse-1.1.15.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="js/jquery.mobile-1.4.4.min.js"></script>
   </head>
   <body>
     
@@ -78,26 +76,26 @@
     </div>
     <br>
     </script>
+	
+	
+	
     <div class = "header shadow">
       <center><img src = "img/title.png" id = "titleimg"></center>
     </div>
     <br>
-
-    <div class = "filters container-fluid">
+	<div class = "filters">
 		<div class = "row row-xs-height">
-      <div class = "col-xs-3"></div>
 		  <div class = "col-xs-6 col-xs-height">
-			<button id="pay" class="btn btn-default btn-lg btn-block" onclick="redrawCards('pay')"><span class = "buttontext">Sort by Pay</span></button>
+			<button id="pay" class="btn btn-primary btn-lg btn-block" onclick="redrawCards('pay')"><span class = "buttontext">Sort by Pay</span></button>
 		  </div>
 		  <div class = "col-xs-6 col-xs-height">
-			<button id="datePosted" class="btn btn-default btn-lg btn-block" onclick="redrawCards('updatedAt')"><span class = "buttontext">Sort by Date Posted</span></button>
+			<button id="datePosted" class="btn btn-primary btn-lg btn-block" onclick="redrawCards('updatedAt')"><span class = "buttontext">Sort by Date Posted</span></button>
 		  </div>
 		</div>
-    </div>
-    
+	</div>
     <!-- Create target -->
     <div class = "cards">
-    <div id="target"></div>
+		<div id="target"></div>
     </div>
 
     <!-- Some code to fetch the data and apply template -->
