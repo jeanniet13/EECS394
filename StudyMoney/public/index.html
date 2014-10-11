@@ -1,151 +1,160 @@
 
 <html>
-  <head>
-    <!-- Credit to Shanimal on StackExchange for template code -->
-    <title>StudyMoney</title>
+<head>
+	<!-- Credit to Shanimal on StackExchange for template code -->
+	<title>StudyMoney</title>
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/researchCardExample.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/researchCardExample.css">
 
-    <!-- Install jQuery and underscore -->
-    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
-    <script src="https://www.parsecdn.com/js/parse-1.1.15.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  </head>
-  <body>
-    
-    <!-- Create your template -->
-    <script type="foo/bar" id="studyCard">
-    <div class = "cardpadding">
-          <div class = "container-fluid card">
-          <a data-toggle="collapse" href="#collapse<%= objectId %>">
-		  <div class = "row row-xs-height">
-              <div class = "col-xs-3 col-xs-height col-middle">
-                <div class = "text-center pricecard">
-                  $<%= pay %>
-                </div>
-              </div>
-              <div class = "col-xs-9 col-xs-height">
-                <div class = "infocard">
-                  <div class = "row">
-                    <div class = "col-xs-12">
-                      <span class = "cardTitle"><%= title %></span>
-                    </div>
-                  </div>
-                  <div class = "row">
-                    <div class = "col-xs-12">
-                        <span class = "cardReq">Reqs: <%= requirements %></span>
-                    </div>
-                  </div>
-                  <br>
-                  <div class = "row">
-                    <div class = "col-xs-6">
-                      <span class = "cardBottom"><%= duration %></span>
-                    </div>
-                    <div class = "col-xs-6 text-right">
-                      <span class = "cardBottom"><%= location %></span>
-                    </div>
-                  </div>
-                  <br>
-                </div>
-              </div>
-            </div>
-          </a>
-          </div>
-          <div id="collapse<%= objectId %>" class="collapse" class = "cardinfo">
-			  <div class = "container-fluid cardinfo">
-				<div class = "row row-xs-height">
-				  <div class = "col-offset-xs-2 col-xs-10 col-xs-height">
+	<!-- Install jQuery and underscore -->
+	<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+	<script src="https://www.parsecdn.com/js/parse-1.1.15.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<!-- Create your template -->
+	<script type="foo/bar" id="studyCard">
+		<div class = "cardpadding">
+			<div class = "container-fluid card">
+				<a data-toggle="collapse" href="#collapse<%= objectId %>">
+					<div class = "row row-xs-height">
+						<div class = "col-xs-3 col-xs-height col-middle">
+							<div class = "text-center pricecard">
+								$<%= pay %>
+							</div>
+						</div>
+						<div class = "col-xs-9 col-xs-height">
+							<div class = "infocard">
+								<div class = "row">
+									<div class = "col-xs-12">
+										<span class = "cardTitle"><%= title %></span>
+									</div>
+								</div>
+								<div class = "row">
+									<div class = "col-xs-12">
+										<span class = "cardReq">Reqs: <%= requirements %></span>
+									</div>
+								</div>
+								<br>
+								<div class = "row">
+									<div class = "col-xs-6">
+										<span class = "cardBottom"><%= duration %></span>
+									</div>
+									<div class = "col-xs-6 text-right">
+										<span class = "cardBottom"><%= location %></span>
+									</div>
+								</div>
+								<br>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div id="collapse<%= objectId %>" class="collapse" class = "cardinfo">
+				<div class = "container-fluid cardinfo">
+					<div class = "row row-xs-height">
+						<div class = "col-offset-xs-2 col-xs-10 col-xs-height">
+							<br>
+							<span class = "cardDescription">Description</span>
+							<br>
+							<span class = "cardReq"><%= description %></span>
+						</div>
+					</div>
 					<br>
-					<span class = "cardDescription">Description</span>
+					<div class = "row row-xs-height descriptionbuttonrow">
+						<div class = "col-xs-12 col-xs-height text-center">
+							<a href="mailto:<%= contact %>"><button type="button" class="btn btn-primary btn-lg btn-block"><span class = "buttontext">E-Mail</span></button></a>
+						</div>
+					</div>
 					<br>
-					<span class = "cardReq"><%= description %></span>
-				  </div>
 				</div>
-				<br>
-				<div class = "row row-xs-height descriptionbuttonrow">
-				  <div class = "col-xs-12 col-xs-height text-center">
-					<a href="mailto:<%= contact %>"><button type="button" class="btn btn-primary btn-lg btn-block"><span class = "buttontext">E-Mail</span></button></a>
-				  </div>
-				</div>
-				<br>
-			  </div>
-          </div>
-    </div>
-    <br>
-    </script>
+			</div>
+		</div>
+		<br>
+	</script>
 	
 	
 	
-    <div class = "header shadow">
-      <center><img src = "img/title.png" id = "titleimg"></center>
-    </div>
-    <br>
+	<div class = "header shadow">
+		<center><img src = "img/title.png" id = "titleimg"></center>
+	</div>
+	<br>
 	<div class = "filters">
 		<div class="btn-group">
-		<div class = "row row-xs-height">
-		  <div class = "col-xs-6 col-xs-height">
-			<button id="pay" class="btn btn-primary btn-lg btn-block" onclick="redrawCards('pay')"><span class = "buttontext">Sort by Pay</span></button>
-		  </div>
-		  <div class = "col-xs-6 col-xs-height">
-			<button id="datePosted" class="btn btn-primary btn-lg btn-block" onclick="redrawCards('updatedAt')"><span class = "buttontext">Sort by Recent</span></button>
-		  </div>
-		</div>
+			<div class = "row row-xs-height">
+				<div class = "col-xs-6 col-xs-height">
+					<button id="pay" class="btn btn-primary btn-lg btn-block" onclick="redrawCards('pay')"><span class = "buttontext">Sort by Pay</span></button>
+				</div>
+				<div class = "col-xs-6 col-xs-height">
+					<button id="updatedAt" class="btn btn-primary btn-lg btn-block" onclick="redrawCards('updatedAt')"><span class = "buttontext">Sort by Recent</span></button>
+				</div>
+			</div>
 		</div>
 	</div>
-    <!-- Create target -->
-    <div class = "cards">
+	<!-- Create target -->
+	<div class = "cards">
 		<div id="target"></div>
-    </div>
+	</div>
 
-    <!-- Some code to fetch the data and apply template -->
+	<!-- Some code to fetch the data and apply template -->
 
-    <script type="text/javascript">
-      Parse.initialize("2Adfr8LRfl5VwX8WgHQHRKZo6GpNcsiUvdBXoBya", "xGwCwmFcuKXxI9JwDuRcJs8uch6UMQAYPre18dzH");
-      var temp = $("#studyCard").html();
-      var us_temp = _.template(temp);
-      var createCard = function(a) {$("#target").append(us_temp(a))};
-      var ResearchStudy = Parse.Object.extend("ResearchStudy");
-      var query = new Parse.Query(ResearchStudy);
-      query.descending("datePosted");
-      query.find({
-              success: function(results) {
-                results.forEach(function(result){
-                    var cardinfo = result.attributes;
-                    cardinfo['objectId'] = result.id;
-                    createCard(cardinfo)
-                  });
-              },
-              error: function(error) {
+	<script type="text/javascript">
+		Parse.initialize("2Adfr8LRfl5VwX8WgHQHRKZo6GpNcsiUvdBXoBya", "xGwCwmFcuKXxI9JwDuRcJs8uch6UMQAYPre18dzH");
+		var temp = $("#studyCard").html();
+		var us_temp = _.template(temp);
+		var createCard = function(a) {$("#target").append(us_temp(a))};
+		var ResearchStudy = Parse.Object.extend("ResearchStudy");
+		var query = new Parse.Query(ResearchStudy);
+		query.descending("pay");
+		$("#pay").addClass("active");
+		query.find({
+			success: function(results) {
+				results.forEach(function(result){
+					var cardinfo = result.attributes;
+					cardinfo['objectId'] = result.id;
+					createCard(cardinfo)
+				});
+			},
+			error: function(error) {
                 // error is an instance of Parse.Error.
               }
             });
 
-      function redrawCards(filter) {
+		function redrawCards(filter) {
         //var datePosted = document.getElementById("datePosted").checked;
         //var pay = document.getElementById("pay").checked;
-        
+        if (filter == "pay") {
+        	$("#pay").addClass("active");
+        	$("#updatedAt").removeClass("active");
+        }
+        else {
+        	$("#pay").removeClass("active");
+        	$("#updatedAt").addClass("active");
+        }
+
         var target = $("#target").html('');
         var q = new Parse.Query(ResearchStudy);
         q.descending(filter);
         
         q.find({
-          success: function(results) {
-            results.forEach(function(result){
-                var cardinfo = result.attributes;
-                cardinfo['objectId'] = result.id;
-                createCard(cardinfo)
-              });
-          },
-          error: function(error) {
+        	success: function(results) {
+        		results.forEach(function(result){
+        			var cardinfo = result.attributes;
+        			cardinfo['objectId'] = result.id;
+        			createCard(cardinfo)
+        		});
+        	},
+        	error: function(error) {
             // error is an instance of Parse.Error.
-              }
-            });
+          }
+        });
       }
       //var template = $("#studyCard").html();
       //$("#target").html(_.template(template,{items:items}));
     </script>
   </body>
-</html>
+  </html>
