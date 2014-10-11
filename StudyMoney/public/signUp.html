@@ -17,25 +17,53 @@
     </div>
     <br>
 	<div class="container-fluid signIn">
-		<form>
-			<div id = "username">
-			Username: <input type = "text" name = "username">
+		
+			<div id ="email">
+			Email: <input type = "text" name = "email">
 			</div>
 			<div id = "password">
 			Password: <input type = "password" name = "password">
 			</div>
-		</form>
+      <button id="login" onclick="logIn()">Log In</button>
+      <button id="signup" onclick="signUp()">Sign Up</button>
+		
 	</div>
 
 
-	<script type="text/javascript">
-		function makeUser(){
-	      var user = new Parse.User();
+	<script type="text/javascript">   
+    Parse.initialize("2Adfr8LRfl5VwX8WgHQHRKZo6GpNcsiUvdBXoBya", "xGwCwmFcuKXxI9JwDuRcJs8uch6UMQAYPre18dzH");
 
-	      
-	    }
+    function Redirect() {
+      window.location = "./index.html";
+    }
+    
+		function signUp(){
+	    var user = new Parse.User();
+      user.set("username", $("#email input").val());
+      user.set("password", $("#password input").val());
+      
+      user.signUp(null, {
+	      success: function(user) {  
+          alert("Sign up successful, redirecting to home page.");
+          setTimeout('Redirect()', 3000);
+        },
+        error: function(user, error) {
+          // Show the error message somewhere and let the user try again.
+          alert("Error: " + error.code + " " + error.message);
+        }
+      });
+	  }
 
-
+    function logIn() {
+      Parse.User.logIn(username, password, {
+        success: function(user) {
+          Redirect();
+        },
+        error: function(user, error) {
+          // Login failed. Check error for reason.
+        }
+      });
+    }
 	</script>
 </body>
 </html>
