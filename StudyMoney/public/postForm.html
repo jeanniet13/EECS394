@@ -1,0 +1,94 @@
+<html>
+<head>
+	<!-- Credit to Shanimal on StackExchange for template code -->
+	<title>StudyMoney - Posting Form</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/researchCardExample.css">
+
+	<!-- Install jQuery and underscore -->
+	<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+	<script src="https://www.parsecdn.com/js/parse-1.1.15.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class = "header shadow">
+		<center><img src = "img/title.png" id = "titleimg"></center>
+	</div>
+	<br>
+
+	<div class = "container postForm">
+		<form>
+			<div class = "cols-xs-12">
+				<div class = "cols-xs-4">Study Title:</div> 
+				<div class = "cols-xs-8"><input type = "text" id = "title"></div>
+			</div>
+			<div class = "cols-xs-12">
+				<div class = "cols-xs-4">Requirements:</div> 
+				<div class = "cols-xs-8"><textarea id = "reqs" rows = 5 cols = 24></textarea></div>
+			</div>
+			<div class = "cols-xs-12">
+				<div class = "cols-xs-4">Pay:</div> 
+				<div class = "cols-xs-8">$<input type = "text" id = "pay" size = "1"></div>
+			</div>
+			<div class = "cols-xs-12">
+				<div class = "cols-xs-4">Location:</div> 
+				<div class = "cols-xs-8"><input type = "text" id = "location"></div>
+			</div>
+			<div class = "cols-xs-12">
+				<div class = "cols-xs-4">Duration:</div> 
+				<div class = "cols-xs-8"><input type = "text" id = "duration" size = "1"> hours</div>
+			</div>
+			<div class = "cols-xs-12">
+				<div class = "cols-xs-4">Description:</div> 
+				<div class = "cols-xs-8"><textarea id = "description" rows = 5 cols = 24></textarea></div>			
+			</div>
+			<div class="cols-xs-12">
+				<button id="submit" class="btn btn-primary btn-lg btn-block" onclick = "submitPost();"><span class = "buttontext">Submit</span></button>
+			</div>
+
+		</form>
+	</div>
+
+	<script type = "text/javascript">
+		function submitPost(){
+			alert("Submitting!");
+			Parse.initialize("2Adfr8LRfl5VwX8WgHQHRKZo6GpNcsiUvdBXoBya", "xGwCwmFcuKXxI9JwDuRcJs8uch6UMQAYPre18dzH");
+			
+			var TestObject = Parse.Object.extend("TestObject");
+			var newStudy = new TestObject();
+			var currentUser = Parse.User.current();
+			if (currentUser){
+				//let the rest of the function happen
+
+			} else {
+				//refuse to continue
+
+			}
+
+			newStudy.save({
+				title: $("#title").val(),
+				pay: $("#pay").val(),
+				requirements: $("#reqs").val(),
+				duration: $("#duration").val(),
+				location: $("#location").val(),
+				description: $("#description").val()
+
+				}, {
+				  success: function(newStudy) {
+				    // Execute any logic that should take place after the object is saved.
+				    alert('New object created with objectId: ' + newStudy.id);
+				  },
+				  error: function(newStudy, error) {
+				    // Execute any logic that should take place if the save fails.
+				    // error is a Parse.Error with an error code and message.
+				    alert('Failed to create new object, with error code: ' + error.code);
+					}
+				}
+			)
+		}
+	</script>
+</body>
+</html>
