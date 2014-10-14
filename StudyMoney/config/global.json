@@ -4,6 +4,10 @@
             "applicationId": "2Adfr8LRfl5VwX8WgHQHRKZo6GpNcsiUvdBXoBya", 
             "masterKey": "KG05jarSRSxzDPkiIsGdRe4SliB7Wj8nNtLAKxyL"
         }, 
+        "StudyMoneyDev": {
+            "applicationId": "DHajCy3H3C742pNLXqTPJUtsGqZ14Nqdysx9F7BP", 
+            "masterKey": "bZiE1hKpG60PtqywqP5WK7jFW0mYo6NyenD7BjwW"
+        }, 
         "_default": {
             "link": "StudyMoney"
         }

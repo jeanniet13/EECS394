@@ -1,0 +1,26 @@
+{ "results": [
+	{
+        "bcryptPassword": "$2a$10$cLMIK.fPT0J7jLddONFAMuc0/SPsmFbOcMWM/1ngzwJHnutUeHVyW",
+        "createdAt": "2014-10-11T16:57:39.529Z",
+        "objectId": "5z4ECIUknW",
+        "sessionToken": "Gd5tvWxrH5pD0UI1w2IqSU0nN",
+        "updatedAt": "2014-10-11T16:57:39.529Z",
+        "username": "HelloWorld"
+    },
+	{
+        "bcryptPassword": "$2a$10$3JHLhc.nB6o/3YUG0bJNy.qz1eVfc.danykXE8Vsdxjs6e/mDx.K.",
+        "createdAt": "2014-10-11T17:36:51.668Z",
+        "objectId": "Qk1LzGeZ9k",
+        "sessionToken": "L7nth54F4HTf25oJDwRxfLtfl",
+        "updatedAt": "2014-10-11T17:36:51.668Z",
+        "username": "root"
+    },
+	{
+        "bcryptPassword": "$2a$10$IYL8sYLRDJD73Zhrz3dSKu9Q8WadMywgxMsYt2vCLlrlNdG5yubUG",
+        "createdAt": "2014-10-14T22:03:04.992Z",
+        "objectId": "2rKB3Xm9V0",
+        "sessionToken": "ETH59QasJASX42RUkV0tlbH9h",
+        "updatedAt": "2014-10-14T22:03:04.992Z",
+        "username": "jeannie"
+    }
+] }

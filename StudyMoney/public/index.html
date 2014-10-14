@@ -67,7 +67,7 @@
 					<br>
 					<div class = "row row-xs-height descriptionbuttonrow">
 						<div class = "col-xs-12 col-xs-height text-center">
-							<a href="mailto:<%= contact %>"><button type="button" class="btn btn-primary btn-lg btn-block"><span class = "buttontext">E-Mail</span></button></a>
+							<a href="mailto:<%= contact %>?subject=<%= titleplus %>&body=I%20am%20interested%20in%20this%20study.%20What%20do%20I%20need%20to%20do%20next?"><button type="button" class="btn btn-primary btn-lg btn-block"><span class = "buttontext">E-Mail</span></button></a>
 						</div>
 					</div>
 					<br>
@@ -103,7 +103,10 @@
 	<!-- Some code to fetch the data and apply template -->
 
 	<script type="text/javascript">
-		Parse.initialize("2Adfr8LRfl5VwX8WgHQHRKZo6GpNcsiUvdBXoBya", "xGwCwmFcuKXxI9JwDuRcJs8uch6UMQAYPre18dzH");
+    // Production
+    Parse.initialize("2Adfr8LRfl5VwX8WgHQHRKZo6GpNcsiUvdBXoBya", "xGwCwmFcuKXxI9JwDuRcJs8uch6UMQAYPre18dzH");
+    // Dev
+		//Parse.initialize("DHajCy3H3C742pNLXqTPJUtsGqZ14Nqdysx9F7BP", "Ya92oZaK0PGflE5o2uHIcGauuowRxpRaUrPvspvm");
 		var temp = $("#studyCard").html();
 		var us_temp = _.template(temp);
 		var createCard = function(a) {$("#target").append(us_temp(a))};
@@ -116,6 +119,7 @@
 				results.forEach(function(result){
 					var cardinfo = result.attributes;
 					cardinfo['objectId'] = result.id;
+          cardinfo['titleplus'] = "RE: " + result.attributes.title.replace(/\s/,"%20") + " Research Study";
 					createCard(cardinfo)
 				});
 			},
@@ -145,6 +149,7 @@
         		results.forEach(function(result){
         			var cardinfo = result.attributes;
         			cardinfo['objectId'] = result.id;
+              cardinfo['titleplus'] = "RE: " + result.attributes.title.replace(/\s/,"%20") + " Research Study";
         			createCard(cardinfo)
         		});
         	},
