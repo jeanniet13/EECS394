@@ -80,10 +80,19 @@
 	
 	
 	<div class = "header shadow">
-		<center><img src = "img/title.png" id = "titleimg"></center>
+		<div class = "row row-xs-height">
+			<div class = "col-xs-3 col-xs-height">
+				<center><div class = "text-center" id = "username"></div></center>
+			</div>
+			<div class = "col-xs-6 col-xs-height">
+				<center><span style="font-size: 6em">StudyMoney</span></center>
+			</div>
+			<div class = "col-xs-3 col-xs-height">
+			</div>
+		</div>
 	</div>
-	<br>
 	<div class = "filters">
+		<br>
 		<div class="btn-group">
 			<div class = "row row-xs-height">
 				<div class = "col-xs-6 col-xs-height">
@@ -104,6 +113,13 @@
 
 	<script type="text/javascript">
 		Parse.initialize("2Adfr8LRfl5VwX8WgHQHRKZo6GpNcsiUvdBXoBya", "xGwCwmFcuKXxI9JwDuRcJs8uch6UMQAYPre18dzH");
+
+		var currentUser = Parse.User.current();
+		if (currentUser) {
+		    $("#username").html("Welcome<br>"+currentUser.attributes.username);
+		} else {
+		    $("#username").html("<a href = \"signUp.html\"><button class =\"btn btn-primary btn-lg\"><span class = \"buttontext\">Log In</span></button></a>");
+		}
 		var temp = $("#studyCard").html();
 		var us_temp = _.template(temp);
 		var createCard = function(a) {$("#target").append(us_temp(a))};

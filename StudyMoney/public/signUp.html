@@ -12,21 +12,37 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>    
-	<div class = "header shadow">
-      <center><img src = "img/title.png" id = "titleimg"></center>
+  <div class = "header shadow">
+    <div class = "row row-xs-height">
+      <div class = "col-xs-3 col-xs-height">
+      </div>
+      <div class = "col-xs-6 col-xs-height">
+        <center><span style="font-size: 6em">StudyMoney</span></center>
+      </div>
+      <div class = "col-xs-3 col-xs-height">
+      </div>
     </div>
+  </div>
     <br>
-	<div class="container-fluid signIn">
-		
-			<div id ="email">
-			Email: <input type = "text" name = "email">
-			</div>
-			<div id = "password">
-			Password: <input type = "password" name = "password">
-			</div>
-      <button id="login" onclick="logIn()">Log In</button>
-      <button id="signup" onclick="signUp()">Sign Up</button>
-		
+    <div class = "row">
+    <div class = "col-xs-offset-2 col-xs-8">
+	<div class="signIn">		
+		<div id ="email">
+			Email: 
+			<br>
+			<input type = "text" name = "email">
+		</div>
+		<div id = "password">
+			Password: 
+			<br>
+			<input type = "password" name = "password">
+		</div>
+		<br>
+      	<center><button class = "btn btn-default btn-lg" id="login" onclick="logIn()"><span class = "buttontext">Log In</span></button>
+      	<button class = "btn btn-primary btn-lg" id="signup" onclick="signUp()"><span class = "buttontext">Sign Up</span></button></center>
+      	<br><br><br>
+	</div>
+	</div>
 	</div>
 
 
