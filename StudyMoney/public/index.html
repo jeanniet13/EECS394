@@ -189,7 +189,7 @@
 
       	query.get(cardID, {
       		success: function(object) {
-      			if (_.isEqual()){
+      			if (_.isEqual(object.attributes["poster"], Parse.User.current())){
 					object.destroy({});
 					alert("Card");
 	      			window.location.reload();
