@@ -1,15 +1,15 @@
 <html>
 <head>
-    <title>StudyMoney</title>    
+  <title>StudyMoney</title>    
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/jquery.mobile-1.4.4.min.css">
-    <link rel="stylesheet" href="css/researchCardExample.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/jquery.mobile-1.4.4.min.css">
+  <link rel="stylesheet" href="css/researchCardExample.css">
 
-    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
-    <script src="https://www.parsecdn.com/js/parse-1.1.15.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+  <script type="text/javascript" src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+  <script src="https://www.parsecdn.com/js/parse-1.1.15.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>    
   <div class = "header shadow">
@@ -23,64 +23,74 @@
       </div>
     </div>
   </div>
+  <br>
+  <div class = "signIn">
+    <div class = "row" id = "email">
+      <div class = "col-xs-3">
+        Email:
+      </div>
+      <div class = "col-xs-offset-1 col-xs-8">
+        <input style = "width: 100%;"type = "text" name = "email">
+      </div>
+    </div>
     <br>
-    <div class = "row">
-    <div class = "col-xs-offset-2 col-xs-8">
-	<div class="signIn">		
-		<div id ="email">
-			Email: 
-			<br>
-			<input type = "text" name = "email">
-		</div>
-		<div id = "password">
-			Password: 
-			<br>
-			<input type = "password" name = "password">
-		</div>
-		<br>
-      	<center><button class = "btn btn-default btn-lg" id="login" onclick="logIn()"><span class = "buttontext">Log In</span></button>
-      	<button class = "btn btn-primary btn-lg" id="signup" onclick="signUp()"><span class = "buttontext">Sign Up</span></button></center>
-      	<br><br><br>
-	</div>
-	</div>
-	</div>
+    <div class = "row" id = "password">
+      <div class = "col-xs-3">
+        Password:
+      </div>
+      <div class = "col-xs-offset-1 col-xs-8">
+        <input style = "width: 100%;" type = "password" name = "password">
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <center>
+    <button class = "btn btn-default btn-lg" id="login" onclick="logIn()"><span class = "buttontext">Log In</span></button>
+    <span id = "space">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <button class = "btn btn-primary btn-lg" id="signup" onclick="signUp()"><span class = "buttontext">Sign Up</span></button>
+  </center>
+  <br><br><br>
 
 
-	<script type="text/javascript">   
+ <script type="text/javascript">   
+    // Dev
+    //Parse.initialize("DHajCy3H3C742pNLXqTPJUtsGqZ14Nqdysx9F7BP", "Ya92oZaK0PGflE5o2uHIcGauuowRxpRaUrPvspvm");
+    // Production
     Parse.initialize("2Adfr8LRfl5VwX8WgHQHRKZo6GpNcsiUvdBXoBya", "xGwCwmFcuKXxI9JwDuRcJs8uch6UMQAYPre18dzH");
 
     function Redirect() {
       window.location = "./index.html";
     }
     
-		function signUp(){
-	    var user = new Parse.User();
-      user.set("username", $("#email input").val());
-      user.set("password", $("#password input").val());
-      
-      user.signUp(null, {
-	      success: function(user) {  
-          alert("Sign up successful, redirecting to home page.");
-          setTimeout('Redirect()', 3000);
-        },
-        error: function(user, error) {
+    function signUp(){
+     var user = new Parse.User();
+     user.set("username", $("#email input").val());
+     user.set("password", $("#password input").val());
+
+     user.signUp(null, {
+       success: function(user) {  
+        alert("Sign up successful, redirecting to home page.");
+        setTimeout('Redirect()', 3000);
+      },
+      error: function(user, error) {
           // Show the error message somewhere and let the user try again.
           alert("Error: " + error.code + " " + error.message);
         }
       });
-	  }
+   }
 
-    function logIn() {
-      Parse.User.logIn($("#email input").val(), $("#password input").val(), {
-        success: function(user) {
-          alert("Login successful, redirecting to home page.");
-          Redirect();
-        },
-        error: function(user, error) {
+   function logIn() {
+    Parse.User.logIn($("#email input").val(), $("#password input").val(), {
+      success: function(user) {
+        alert("Login successful, redirecting to home page.");
+        Redirect();
+      },
+      error: function(user, error) {
           // Login failed. Check error for reason.
         }
       });
-    }
-	</script>
+  }
+</script>
 </body>
 </html>
