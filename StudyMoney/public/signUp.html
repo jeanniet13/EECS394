@@ -55,8 +55,9 @@
 	  }
 
     function logIn() {
-      Parse.User.logIn(username, password, {
+      Parse.User.logIn($("#email input").val(), $("#password input").val(), {
         success: function(user) {
+          alert("Login successful, redirecting to home page.");
           Redirect();
         },
         error: function(user, error) {
