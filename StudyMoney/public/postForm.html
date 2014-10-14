@@ -54,13 +54,20 @@
 
 	<script type = "text/javascript">
 		function submitPost(){
-			//alert("submitPost!");
+			alert("submitPost!");
 			Parse.initialize("2Adfr8LRfl5VwX8WgHQHRKZo6GpNcsiUvdBXoBya", "xGwCwmFcuKXxI9JwDuRcJs8uch6UMQAYPre18dzH");
 
 			var ResearchStudy = Parse.Object.extend("ResearchStudy");
 			var newStudy = new ResearchStudy();
 
-			//_.each(attrs, function(value, key, list){alert(typeof value)})
+			var currentUser = Parse.User.current();
+			var email = ""
+			var poster = {}
+			if (currentUser){
+				poseter = currentUser;
+				email = currentUser.getEmail(); 
+
+			}
 
 			newStudy.save({
 				title: $("#title").val(),
@@ -68,7 +75,9 @@
 				requirements: $("#reqs").val(),
 				duration: parseInt($("#duration").val()),
 				location: $("#location").val(),
-				description: $("#description").val()
+				description: $("#description").val(),
+				contact: email,
+				poster: poster
 
 				}, {
 				success: function (newStudy){alert('New object created with objectId: ' + newStudy.id);},
