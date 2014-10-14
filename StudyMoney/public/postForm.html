@@ -31,7 +31,7 @@
 			</div>
 			<div class = "cols-xs-12">
 				<div class = "cols-xs-4">Pay:</div> 
-				<div class = "cols-xs-8">$<input type = "text" id = "pay" size = "1"></div>
+				<div class = "cols-xs-8">$<input type = "number" id = "pay" size = "1"></div>
 			</div>
 			<div class = "cols-xs-12">
 				<div class = "cols-xs-4">Location:</div> 
@@ -39,7 +39,7 @@
 			</div>
 			<div class = "cols-xs-12">
 				<div class = "cols-xs-4">Duration:</div> 
-				<div class = "cols-xs-8"><input type = "text" id = "duration" size = "1"> hours</div>
+				<div class = "cols-xs-8"><input type = "number" id = "duration" size = "1"> hours</div>
 			</div>
 			<div class = "cols-xs-12">
 				<div class = "cols-xs-4">Description:</div> 
@@ -54,40 +54,37 @@
 
 	<script type = "text/javascript">
 		function submitPost(){
-			alert("Submitting!");
+			alert("submitPost!");
 			Parse.initialize("2Adfr8LRfl5VwX8WgHQHRKZo6GpNcsiUvdBXoBya", "xGwCwmFcuKXxI9JwDuRcJs8uch6UMQAYPre18dzH");
-			
-			var TestObject = Parse.Object.extend("TestObject");
-			var newStudy = new TestObject();
-			var currentUser = Parse.User.current();
-			if (currentUser){
-				//let the rest of the function happen
 
-			} else {
-				//refuse to continue
+			var ResearchStudy = Parse.Object.extend("ResearchStudy");
+			var newStudy = new ResearchStudy();
+
+			var currentUser = Parse.User.current();
+			var email = ""
+			var poster = {}
+			if (currentUser){
+				poseter = currentUser;
+				email = currentUser.getEmail(); 
 
 			}
 
 			newStudy.save({
 				title: $("#title").val(),
-				pay: $("#pay").val(),
+				pay: parseInt($("#pay").val()),
 				requirements: $("#reqs").val(),
-				duration: $("#duration").val(),
+				duration: parseInt($("#duration").val()),
 				location: $("#location").val(),
-				description: $("#description").val()
+				description: $("#description").val(),
+				contact: email,
+				poster: poster
 
 				}, {
-				  success: function(newStudy) {
-				    // Execute any logic that should take place after the object is saved.
-				    alert('New object created with objectId: ' + newStudy.id);
-				  },
-				  error: function(newStudy, error) {
-				    // Execute any logic that should take place if the save fails.
-				    // error is a Parse.Error with an error code and message.
-				    alert('Failed to create new object, with error code: ' + error.code);
-					}
-				}
-			)
+				success: function (newStudy){alert('New object created with objectId: ' + newStudy.id);},
+				error: function (newStudy, error){alert('Failed to create new object, with error code: ' + error.code);}
+
+			})
+			alert("Done!"); //DO NOT TAKE OUT THIS LINE
 		}
 	</script>
 </body>

@@ -80,9 +80,17 @@
 	
 	
 	<div class = "header shadow">
-		<center><img src = "img/title.png" id = "titleimg"></center>
+		<div class = "row row-xs-height">
+			<div class = "col-xs-3 col-xs-height">
+			</div>
+			<div class = "col-xs-6 col-xs-height col-middle">
+				<center><span style="font-size: 6em">StudyMoney</span></center>
+			</div>
+			<div class = "col-xs-3 col-xs-height col-bottom">
+				<div class = "text-center" id = "username"></div>
+			</div>
+		</div>
 	</div>
-	<br>
 	<div class = "filters">
 		<div class="btn-group">
 			<div class = "row row-xs-height">
@@ -103,10 +111,17 @@
 	<!-- Some code to fetch the data and apply template -->
 
 	<script type="text/javascript">
-    // Production
-    Parse.initialize("2Adfr8LRfl5VwX8WgHQHRKZo6GpNcsiUvdBXoBya", "xGwCwmFcuKXxI9JwDuRcJs8uch6UMQAYPre18dzH");
     // Dev
 		//Parse.initialize("DHajCy3H3C742pNLXqTPJUtsGqZ14Nqdysx9F7BP", "Ya92oZaK0PGflE5o2uHIcGauuowRxpRaUrPvspvm");
+    // Production
+		Parse.initialize("2Adfr8LRfl5VwX8WgHQHRKZo6GpNcsiUvdBXoBya", "xGwCwmFcuKXxI9JwDuRcJs8uch6UMQAYPre18dzH");
+
+		var currentUser = Parse.User.current();
+		if (currentUser) {
+		    $("#username").html("<button onclick=\"Parse.User.logOut();location.reload();\" class =\"btn btn-primary btn-lg\"><span class = \"buttontext\">Log Out</span></button>");
+		} else {
+		    $("#username").html("<a href = \"signUp.html\"><button class =\"btn btn-primary btn-lg\"><span class = \"buttontext\">Log In</span></button></a>");
+		}
 		var temp = $("#studyCard").html();
 		var us_temp = _.template(temp);
 		var createCard = function(a) {$("#target").append(us_temp(a))};

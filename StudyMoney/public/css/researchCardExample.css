@@ -14,6 +14,11 @@ a:hover {
     z-index: 1;
 }
 
+#username {
+    z-index: 3;
+    font-size: 3em;
+}
+
 .cardinfo {
     max-width: 900px;
     background-color: RGB(250,250,250);
