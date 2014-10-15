@@ -1,0 +1,111 @@
+<html>
+<head>
+	<!-- Credit to Shanimal on StackExchange for template code -->
+	<title>StudyMoney - Posting Form</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/researchCardExample.css">
+
+	<!-- Install jQuery and underscore -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+	<script src="https://www.parsecdn.com/js/parse-1.1.15.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div class = "container">
+		<div class="col-xs-8">
+			<h2 class="text-center">Post Form</h2>
+		</div>
+		<div class="form-group col-xs-8">
+			<label for="Title">Research Title</label>
+			<input type="text" class="form-control" id="Title" placeholder="Enter Title">
+		</div>
+
+		<div class="form-group col-xs-8">
+    		<label for="Description">Description</label>
+    		<textarea type="text" class="form-control" id="Description" placeholder="Description"></textarea>
+  		</div>
+  
+  		<div class="form-group col-xs-8">
+  		    <label for="Requirements">Requirements</label>
+    		<textarea type="text" class="form-control" id="Requirements" placeholder="Requirements"></textarea>
+  		</div>
+
+		<div class="form-group col-xs-8">
+  			<div class="row">
+  				<div class="col-xs-4">
+  					<label for="Duration">Duration</label>
+  					<input type="text" class="form-control" id="Duration" placeholder="Hours">
+  				</div>
+
+  				<div class="col-xs-4">
+  					<label for="Pay">Pay</label>
+  					<input type="number" class="form-control" id="PP" placeholder="$">
+  				</div>
+
+  				<div class="col-xs-4">
+  					<label for="Location">Location</label>
+  					<input type="text" class="form-control" id="Location" placeholder="location">
+  				</div>
+  			</div>
+		</div>
+
+		<div class="form-group col-xs-8">
+			<label for="URL">URL</label>
+    		<input type="text" class="form-control" id="URL" placeholder="URL">
+  		</div>
+
+		<div class="form-group col-xs-8">
+			<label for="Contact">Contact</label>
+    		<input type="text" class="form-control" id="Contact" placeholder="Email Address">
+  		</div>
+
+        <div class="col-xs-8">
+        	<button type="submit" class="btn btn-primary btn-lg btn-block" id="submit">Submit</button>
+</div>
+
+
+
+<script>
+$('#submit').click(function () {
+	Parse.initialize("2Adfr8LRfl5VwX8WgHQHRKZo6GpNcsiUvdBXoBya", "xGwCwmFcuKXxI9JwDuRcJs8uch6UMQAYPre18dzH");
+	var tt = $("#Title").val();
+	var des =  $("#Description").val();
+	var req =  $("#Requirements").val();
+	var dur =  $("#Duration").val();
+  var pp =  parseInt($("#PP").val());
+  var loc =  $("#Location").val();
+  var url =  $("#URL").val();
+  var con =  $("#Contact").val();
+
+    var TestObject = Parse.Object.extend("StudyTest");
+    var testObject = new TestObject();
+ 
+	testObject.set("title", tt);
+	testObject.set("description", des);
+	testObject.set("requirements", req);
+	testObject.set("duration", dur);
+	testObject.set("pay", pp);
+	testObject.set("location", loc);
+	testObject.set("URL", url);
+	testObject.set("contact", con);
+
+	testObject.save(null, {
+  	  success: function(testObject) {
+    		// Execute any logic that should take place after the object is saved.
+        alert('New object created with objectId: ' + testObject.id);
+   	},
+  	  error: function(testObject, error) {
+    		// Execute any logic that should take place if the save fails.
+    		// error is a Parse.Error with an error code and message.
+        alert('Failed to create new object, with error code: ' + error.id);
+  	  }
+	});
+ });
+</script>
+</body>
+</html>
