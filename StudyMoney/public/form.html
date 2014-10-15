@@ -1,5 +1,7 @@
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+  <meta name="apple-mobile-web-app-capable" content="yes" /> 
 	<!-- Credit to Shanimal on StackExchange for template code -->
 	<title>StudyMoney - Posting Form</title>
 
@@ -16,26 +18,29 @@
 </head>
 <body>
 
-	<div class = "container">
-		<div class="col-xs-8">
-			<h2 class="text-center">Post Form</h2>
-		</div>
-		<div class="form-group col-xs-8">
+<div class = "header shadow">
+    <center><img src = "img/title.png" id = "titleimg"></center>
+  </div>
+  <br>
+  <div class = "filters">
+  </div>
+      <div class = "container">
+		<div class="form-group">
 			<label for="Title">Research Title</label>
 			<input type="text" class="form-control" id="Title" placeholder="Enter Title">
 		</div>
 
-		<div class="form-group col-xs-8">
+		<div class="form-group">
     		<label for="Description">Description</label>
     		<textarea type="text" class="form-control" id="Description" placeholder="Description"></textarea>
   		</div>
   
-  		<div class="form-group col-xs-8">
+  		<div class="form-group">
   		    <label for="Requirements">Requirements</label>
     		<textarea type="text" class="form-control" id="Requirements" placeholder="Requirements"></textarea>
   		</div>
 
-		<div class="form-group col-xs-8">
+		<div class="form-group">
   			<div class="row">
   				<div class="col-xs-4">
   					<label for="Duration">Duration</label>
@@ -54,25 +59,28 @@
   			</div>
 		</div>
 
-		<div class="form-group col-xs-8">
+		<div class="form-group">
 			<label for="URL">URL</label>
     		<input type="text" class="form-control" id="URL" placeholder="URL">
   		</div>
 
-		<div class="form-group col-xs-8">
+		<div class="form-group">
 			<label for="Contact">Contact</label>
     		<input type="text" class="form-control" id="Contact" placeholder="Email Address">
   		</div>
 
-        <div class="col-xs-8">
+        <div>
         	<button type="submit" class="btn btn-primary btn-lg btn-block" id="submit">Submit</button>
 </div>
+<br>
+</div>
+
 
 
 
 <script>
 $('#submit').click(function () {
-	Parse.initialize("2Adfr8LRfl5VwX8WgHQHRKZo6GpNcsiUvdBXoBya", "xGwCwmFcuKXxI9JwDuRcJs8uch6UMQAYPre18dzH");
+	Parse.initialize("cDR7vqrOupZlqWhkrnneoEIIE5o6CWlNK893uj2n", "TrsU9ZYBIYWXWoNN4u8cV8WoQjG5BBw0bJPYBOrm");
 	var tt = $("#Title").val();
 	var des =  $("#Description").val();
 	var req =  $("#Requirements").val();
@@ -82,7 +90,7 @@ $('#submit').click(function () {
   var url =  $("#URL").val();
   var con =  $("#Contact").val();
 
-    var TestObject = Parse.Object.extend("StudyTest");
+    var TestObject = Parse.Object.extend("ResearchStudy");
     var testObject = new TestObject();
  
 	testObject.set("title", tt);
