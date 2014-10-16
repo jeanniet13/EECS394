@@ -1,7 +1,5 @@
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
-  <meta name="apple-mobile-web-app-capable" content="yes" /> 
 	<!-- Credit to Shanimal on StackExchange for template code -->
 	<title>StudyMoney - Posting Form</title>
 
@@ -17,103 +15,129 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-<div class = "header shadow">
-    <center><img src = "img/title.png" id = "titleimg"></center>
-  </div>
-  <br>
-  <div class = "filters">
-  </div>
-      <div class = "container">
+	<div class = "header shadow">
+		<div class = "row row-xs-height">
+			<div class = "col-xs-3 col-xs-height col-bottom">
+				<a href = "./index.html"><button class ="btn btn-primary btn-lg"><span class = "buttontext">Cancel</span></button></a>
+			</div>
+			<div class = "col-xs-6 col-xs-height col-bottom">
+				<center><span style="font-size: 6em">StudyMoney</span></center>
+			</div>
+			<div class = "col-xs-3 col-xs-height col-bottom">
+				<div class = "text-right" id = "username"></div>
+			</div>
+		</div>
+	</div>
+	<div class = "container filters">
 		<div class="form-group">
 			<label for="Title">Research Title</label>
 			<input type="text" class="form-control" id="Title" placeholder="Enter Title">
 		</div>
 
 		<div class="form-group">
-    		<label for="Description">Description</label>
-    		<textarea type="text" class="form-control" id="Description" placeholder="Description"></textarea>
-  		</div>
-  
-  		<div class="form-group">
-  		    <label for="Requirements">Requirements</label>
-    		<textarea type="text" class="form-control" id="Requirements" placeholder="Requirements"></textarea>
-  		</div>
+			<label for="Description">Description</label>
+			<textarea type="text" class="form-control" id="Description" placeholder="Description"></textarea>
+		</div>
 
 		<div class="form-group">
-  			<div class="row">
-  				<div class="col-xs-4">
-  					<label for="Duration">Duration</label>
-  					<input type="text" class="form-control" id="Duration" placeholder="Hours">
-  				</div>
+			<label for="Requirements">Requirements</label>
+			<textarea type="text" class="form-control" id="Requirements" placeholder="Requirements"></textarea>
+		</div>
 
-  				<div class="col-xs-4">
-  					<label for="Pay">Pay</label>
-  					<input type="number" class="form-control" id="PP" placeholder="$">
-  				</div>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-xs-4">
+					<label for="Duration">Duration</label>
+					<input type="text" class="form-control" id="Duration" placeholder="Hours">
+				</div>
 
-  				<div class="col-xs-4">
-  					<label for="Location">Location</label>
-  					<input type="text" class="form-control" id="Location" placeholder="location">
-  				</div>
-  			</div>
+				<div class="col-xs-4">
+					<label for="Pay">Pay</label>
+					<input type="number" class="form-control" id="PP" placeholder="$">
+				</div>
+
+				<div class="col-xs-4">
+					<label for="Location">Location</label>
+					<input type="text" class="form-control" id="Location" placeholder="location">
+				</div>
+			</div>
 		</div>
 
 		<div class="form-group">
 			<label for="URL">URL</label>
-    		<input type="text" class="form-control" id="URL" placeholder="URL">
-  		</div>
+			<input type="text" class="form-control" id="URL" placeholder="URL">
+		</div>
 
 		<div class="form-group">
 			<label for="Contact">Contact</label>
-    		<input type="text" class="form-control" id="Contact" placeholder="Email Address">
-  		</div>
+			<input type="text" class="form-control" id="Contact" placeholder="Email Address">
+		</div>
 
-        <div>
-        	<button type="submit" class="btn btn-primary btn-lg btn-block" id="submit">Submit</button>
-</div>
-<br>
-</div>
-
-
+		<div>
+			<button type="submit" class="btn btn-primary btn-lg btn-block" id="submit">Submit</button>
+		</div>
+		<br>
+	</div>
 
 
-<script>
-$('#submit').click(function () {
-	Parse.initialize("cDR7vqrOupZlqWhkrnneoEIIE5o6CWlNK893uj2n", "TrsU9ZYBIYWXWoNN4u8cV8WoQjG5BBw0bJPYBOrm");
-	var tt = $("#Title").val();
-	var des =  $("#Description").val();
-	var req =  $("#Requirements").val();
-	var dur =  $("#Duration").val();
-  var pp =  parseInt($("#PP").val());
-  var loc =  $("#Location").val();
-  var url =  $("#URL").val();
-  var con =  $("#Contact").val();
 
-    var TestObject = Parse.Object.extend("ResearchStudy");
-    var testObject = new TestObject();
- 
-	testObject.set("title", tt);
-	testObject.set("description", des);
-	testObject.set("requirements", req);
-	testObject.set("duration", dur);
-	testObject.set("pay", pp);
-	testObject.set("location", loc);
-	testObject.set("URL", url);
-	testObject.set("contact", con);
 
-	testObject.save(null, {
-  	  success: function(testObject) {
+	<script>
+  // Dev
+  Parse.initialize("DHajCy3H3C742pNLXqTPJUtsGqZ14Nqdysx9F7BP", "Ya92oZaK0PGflE5o2uHIcGauuowRxpRaUrPvspvm");
+  // Production
+  //  Parse.initialize("2Adfr8LRfl5VwX8WgHQHRKZo6GpNcsiUvdBXoBya", "xGwCwmFcuKXxI9JwDuRcJs8uch6UMQAYPre18dzH");
+  
+    // bowyer
+  //Parse.initialize("cDR7vqrOupZlqWhkrnneoEIIE5o6CWlNK893uj2n", "TrsU9ZYBIYWXWoNN4u8cV8WoQjG5BBw0bJPYBOrm");
+  var user = Parse.User.current();
+  var un;
+  if (user) {
+  	un = user.attributes.username;
+  	$("#username").html("<button onclick=\"Parse.User.logOut();location.reload();\" class =\"btn btn-primary btn-lg\"><span class = \"buttontext\">Log Out</span></button>");
+  } else {
+  	un = "none";
+  	$("#username").html("<a href = \"signUp.html\"><button class =\"btn btn-primary btn-lg\"><span class = \"buttontext\">Log In</span></button></a>");
+  }
+
+  $('#submit').click(function () {
+
+  	var un = user.attributes.username;
+  	var tt = $("#Title").val();
+  	var des =  $("#Description").val();
+  	var req =  $("#Requirements").val();
+  	var dur =  $("#Duration").val();
+  	var pp =  parseInt($("#PP").val());
+  	var loc =  $("#Location").val();
+  	var url =  $("#URL").val();
+  	var con =  $("#Contact").val();
+
+  	var TestObject = Parse.Object.extend("ResearchStudy");
+  	var testObject = new TestObject();
+
+  	testObject.set("user", user);
+  	testObject.set("title", tt);
+  	testObject.set("description", des);
+  	testObject.set("requirements", req);
+  	testObject.set("duration", dur);
+  	testObject.set("pay", pp);
+  	testObject.set("location", loc);
+  	testObject.set("URL", url);
+  	testObject.set("contact", con);
+  	testObject.set("poster", un);
+
+  	testObject.save(null, {
+  		success: function(testObject) {
     		// Execute any logic that should take place after the object is saved.
-        alert('New object created with objectId: ' + testObject.id);
-   	},
-  	  error: function(testObject, error) {
+    		alert('New object created with objectId: ' + testObject.id);
+    	},
+    	error: function(testObject, error) {
     		// Execute any logic that should take place if the save fails.
     		// error is a Parse.Error with an error code and message.
-        alert('Failed to create new object, with error code: ' + error.id);
-  	  }
-	});
- });
+    		alert('Failed to create new object, with error code: ' + error.id);
+    	}
+    });
+  });
 </script>
 </body>
 </html>
