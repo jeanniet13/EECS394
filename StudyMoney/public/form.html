@@ -13,6 +13,7 @@
 	<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
 	<script src="https://www.parsecdn.com/js/parse-1.1.15.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/jquery.numeric.js"></script>
 </head>
 <body>
 	<div class = "header shadow">
@@ -48,12 +49,12 @@
 			<div class="row">
 				<div class="col-xs-4">
 					<label for="Duration">Duration</label>
-					<input type="text" class="form-control" id="Duration" placeholder="Hours">
+					<input type="number" class="form-control numeric" id="Duration" placeholder="Minutes">
 				</div>
 
 				<div class="col-xs-4">
 					<label for="Pay">Pay</label>
-					<input type="number" class="form-control" id="PP" placeholder="$">
+					<input type="number" class="form-control numeric" id="PP" placeholder="$">
 				</div>
 
 				<div class="col-xs-4">
@@ -99,18 +100,31 @@
   	un = "none";
   	$("#username").html("<a href = \"signUp.html\"><button class =\"btn btn-primary btn-lg\"><span class = \"buttontext\">Log In</span></button></a>");
   }
+  $("input.numeric").numeric();
 
   $('#submit').click(function () {
 
+
+  	// var valuesArr = ["Title","Description","Requirements","Duration", "PP", "Location", "URL", "Contact", "Duration"];
+  	// valuesArr.forEach(function(value){
+  	// 	var val = $("#"+value).val();
+  	// 	if (value == "PP" || value == "Duration") {
+  	// 		val = parseInt(val);
+  	// 	}
+  	// 	if (!val) {
+  	// 		alert("Please fill in the " + value + " field");
+  	// 	}
+  	// });
   	var un = user.attributes.username;
   	var tt = $("#Title").val();
-  	var des =  $("#Description").val();
+  	var des = $("#Description").val();
   	var req =  $("#Requirements").val();
-  	var dur =  $("#Duration").val();
+  	var dur =  $("#Duration").val() + " minutes";
   	var pp =  parseInt($("#PP").val());
   	var loc =  $("#Location").val();
   	var url =  $("#URL").val();
   	var con =  $("#Contact").val();
+  	var len = parseInt($("#Duration").val());
 
   	var TestObject = Parse.Object.extend("ResearchStudy");
   	var testObject = new TestObject();
@@ -125,6 +139,7 @@
   	testObject.set("URL", url);
   	testObject.set("contact", con);
   	testObject.set("poster", un);
+  	testObject.set("length", len);
 
   	testObject.save(null, {
   		success: function(testObject) {

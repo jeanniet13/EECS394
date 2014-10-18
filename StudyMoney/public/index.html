@@ -107,11 +107,14 @@
 	<div class = "filters">
 		<div class="btn-group">
 			<div class = "row row-xs-height">
-				<div class = "col-xs-6 col-xs-height">
+				<div class = "col-xs-4 col-xs-height">
 					<button id="pay" class="btn btn-primary btn-lg btn-block" onclick="redrawCards('pay')"><span class = "buttontext">Sort by Pay</span></button>
 				</div>
-				<div class = "col-xs-6 col-xs-height">
+				<div class = "col-xs-4 col-xs-height">
 					<button id="updatedAt" class="btn btn-primary btn-lg btn-block" onclick="redrawCards('updatedAt')"><span class = "buttontext">Sort by Recent</span></button>
+				</div>
+				<div class = "col-xs-4 col-xs-height">
+					<button id="duration" class="btn btn-primary btn-lg btn-block" onclick="redrawCards('duration')"><span class = "buttontext">Sort by Duration</span></button>
 				</div>
 			</div>
 		</div>
@@ -167,19 +170,41 @@
         if (filter == "pay") {
         	$("#pay").addClass("active");
         	$("#updatedAt").removeClass("active");
+        	$("#duration").removeClass("active");
+        }
+        else if(filter == "updatedAt"){
+        	$("#pay").removeClass("active");
+        	$("#updatedAt").addClass("active");
+        	$("#duration").removeClass("active");
         }
         else {
         	$("#pay").removeClass("active");
-        	$("#updatedAt").addClass("active");
+        	$("#duration").addClass("active");
+        	$("#updatedAt").removeClass("active");
+
         }
 
-        var target = $("#target").html('');
+		var target = $("#target").html('');
         var q = new Parse.Query(ResearchStudy);
-        q.descending(filter);
+        
+
+        if (filter == "duration"){
+        	filter = "length";
+        	q.ascending(filter);
+        }
+        else{
+        	q.descending(filter);
+
+        }
+
+        
         
         q.find({
         	success: function(results) {
         		results.forEach(function(result){
+        			if (!result.attributes.length) {
+        				return false;
+        			}
         			var cardinfo = result.attributes;
         			cardinfo['objectId'] = result.id;
               		cardinfo['titleplus'] = "RE: " + result.attributes.title.replace(/\s/,"%20") + " Research Study";
