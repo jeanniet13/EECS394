@@ -1,5 +1,5 @@
 
-/*
+
 $(function() {
   
   Parse.$ = jQuery
@@ -19,6 +19,7 @@ $(function() {
     }
   })
   
+  /*
   var study = new ResearchStudy(); 
   study.save({
     title: "Study on Life Roles and Experiences",
@@ -84,7 +85,49 @@ $(function() {
       // error is a Parse.Error with an error code and message.
     }
   });
+  */
   
+  // Study Collections
+  //
+  
+  var StudiesCollection = Parse.Collection.extend({
+    model: ResearchStudy,
+    
+    comparator: function(study) {
+      return study.get('createdAt');
+    }
+  });
+  
+  
+  // The main view for browsing research studies
+  var BrowseStudiesView = Parse.View.extend({
+    
+    template: _.template($('#studyCard').html()),
+    
+    render: function() {
+      var collection = new StudiesCollection();
+      collection.fetch({
+        success: function(colletion) {
+          collection.each(function(object) {
+            console.warn(object);
+          });
+        },
+        error: function(collection, error) {
+          // The collection could not be retrieved.
+        }
+      });
+      _.each(collection, loadcard);
+    },
+    
+    loadcard: function(study) {
+      $("#target").append(template(study));
+    }
+  });
+  
+  // Log In
+  //
+  
+  /*
   var LogInView = Parse.View.extend({
     events: {
       "submit form.login-form": "logIn",
@@ -149,6 +192,5 @@ $(function() {
       this.delegateEvents();
     }
   });
-  
+  */
 });
-*/

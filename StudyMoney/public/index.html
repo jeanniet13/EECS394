@@ -1,4 +1,3 @@
-
 <html>
 <head>
 	<!-- Credit to Shanimal on StackExchange for template code -->
@@ -24,7 +23,17 @@
 		<div class = "cardpadding">
 			<div class = "container-fluid card">
 				<a data-toggle="collapse" href="#collapse<%= objectId %>">
-					<div class = "row row-xs-height">
+          <div class="row row-xs-height">
+            <div class="col-xs-3 col-xs-height col-middle">
+              <br>
+              <% if (emailedStudy(objectId)) { %>
+                <span style="font-size:3em" class="glyphicon glyphicon-envelope"></span>
+              <% } else { %>
+                <br>
+              <% } %>
+            </div>
+          </div>
+					<div class = "row row-xs-height">     
 						<div class = "col-xs-3 col-xs-height col-middle">
 							<div class = "text-center pricecard">
 								$<%= pay %>
@@ -33,11 +42,11 @@
 						<div class = "col-xs-9 col-xs-height">
 							<div class = "infocard">
 								<div class = "row">
-									<div class = "col-xs-9">
+									<div class = "col-xs-9 col-xs-height">
 									</div>
-									<div id = "delbutton" class = "col-xs-3">
+									<div id = "delbutton" class = "col-xs-3 col-xs-height">
 										<% if (username == poster) { %>
-										<button class="btn btn-primary btn-block" onclick="deleteCard('<%= objectId %>')"><span class = "buttontext">Del</span></button>
+										<button class="btn btn-primary btn-block" onclick="deleteCard('<%= objectId %>')"><span class = "buttontext">Delete</span></button>
 										<% } %>
 									</div>
 								</div>
@@ -79,7 +88,7 @@
 					<br>
 					<div class = "row row-xs-height descriptionbuttonrow">
 						<div class = "col-xs-12 col-xs-height text-center">
-							<a href="mailto:<%= contact %>?subject=<%= titleplus %>&body=I%20am%20interested%20in%20this%20study.%20What%20do%20I%20need%20to%20do%20next?"><button type="button" class="btn btn-primary btn-lg btn-block"><span class = "buttontext">E-Mail</span></button></a>
+							<a target="_blank" onclick="studyEmailed('<%= objectId %>')" href="mailto:<%= contact %>?subject=<%= titleplus %>&body=I%20am%20interested%20in%20this%20study.%20What%20do%20I%20need%20to%20do%20next?"><button type="button" class="btn btn-primary btn-lg btn-block"><span class = "buttontext">E-Mail</span></button></a>
 						</div>
 					</div>
 					<br>
@@ -88,7 +97,6 @@
 		</div>
 		<br>
 	</script>
-	
 	
 	
 	<div class = "header shadow">
@@ -139,9 +147,31 @@
 		    $("#username").html("<a href = \"signUp.html\"><button class =\"btn btn-primary btn-lg\"><span class = \"buttontext\">Log In</span></button></a>");
 		}
 
+    function studyEmailed(studyID) {
+      console.log("1");
+      if (currentUser) {
+        console.log("2");
+        currentUser.addUnique("emailedStudies", studyID);
+        console.log("3");
+        currentUser.save(null, {
+          success: function(User) {
+          
+          }
+        });
+        console.log("4");
+      }
+      console.log("5");
+    }
 
-
-
+    function emailedStudy(studyID) {
+      if (currentUser) {
+        if (currentUser.attributes["emailedStudies"].indexOf(studyID) > -1) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
 
 		var temp = $("#studyCard").html();
 		var us_temp = _.template(temp);
@@ -237,8 +267,6 @@
       		},
       		error: function(object, error) {alert("Parse failed with error code: " + error.code);}
       	})
-
-
       }
     </script>
   </body>
