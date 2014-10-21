@@ -116,13 +116,13 @@
 		<div class="btn-group">
 			<div class = "row row-xs-height">
 				<div class = "col-xs-4 col-xs-height">
-					<button id="pay" class="btn btn-primary btn-lg btn-block" onclick="redrawCards('pay')"><span class = "buttontext">Sort by Pay</span></button>
+					<button id="pay" class="btn btn-primary btn-lg btn-block" onclick="redrawCards('pay')"><span class = "filtertext">Pay</span></button>
 				</div>
 				<div class = "col-xs-4 col-xs-height">
-					<button id="updatedAt" class="btn btn-primary btn-lg btn-block" onclick="redrawCards('updatedAt')"><span class = "buttontext">Sort by Recent</span></button>
+					<button id="updatedAt" class="btn btn-primary btn-lg btn-block" onclick="redrawCards('updatedAt')"><span class = "filtertext">Recent</span></button>
 				</div>
 				<div class = "col-xs-4 col-xs-height">
-					<button id="duration" class="btn btn-primary btn-lg btn-block" onclick="redrawCards('duration')"><span class = "buttontext">Sort by Duration</span></button>
+					<button id="duration" class="btn btn-primary btn-lg btn-block" onclick="redrawCards('duration')"><span class = "filtertext">Duration</span></button>
 				</div>
 			</div>
 		</div>
@@ -148,19 +148,14 @@
 		}
 
     function studyEmailed(studyID) {
-      console.log("1");
       if (currentUser) {
-        console.log("2");
         currentUser.addUnique("emailedStudies", studyID);
-        console.log("3");
         currentUser.save(null, {
           success: function(User) {
-          
+          window.location.reload();
           }
         });
-        console.log("4");
       }
-      console.log("5");
     }
 
     function emailedStudy(studyID) {
@@ -232,7 +227,7 @@
         q.find({
         	success: function(results) {
         		results.forEach(function(result){
-        			if (!result.attributes.length) {
+        			if (!result.attributes.length && filter == "length") {
         				return false;
         			}
         			var cardinfo = result.attributes;

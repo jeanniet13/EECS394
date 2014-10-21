@@ -97,6 +97,10 @@ body {
     font-size: 3em;
 }
 
+.filtertext {
+    font-size: 3em;
+}
+
 /* vertical alignment styles */
 .col-top {
     vertical-align:top;
