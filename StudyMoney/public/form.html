@@ -29,57 +29,68 @@
 			</div>
 		</div>
 	</div>
-	<div class = "container filters">
+	<div style = "margin: 0 30px 0 30px" class = "container-fluid filters">
 		<div class="form-group">
 			<label for="Title">Research Title</label>
-			<input type="text" class="form-control" id="Title" placeholder="Enter Title">
+			<input type="text" class="form-control" id="Title" placeholder="Super Cool Study">
 		</div>
 
 		<div class="form-group">
 			<label for="Description">Description</label>
-			<textarea type="text" class="form-control" id="Description" placeholder="Description"></textarea>
+			<textarea type="text" class="form-control" id="Description" placeholder="Help us learn about awesome things!"></textarea>
 		</div>
 
 		<div class="form-group">
 			<label for="Requirements">Requirements</label>
-			<textarea type="text" class="form-control" id="Requirements" placeholder="Requirements"></textarea>
+			<textarea type="text" class="form-control" id="Requirements" placeholder="Fun-loving person"></textarea>
 		</div>
 
 		<div class="form-group">
 			<div class="row">
 				<div class="col-xs-4">
 					<label for="Duration">Duration</label>
-					<input type="number" class="form-control numeric" id="Duration" placeholder="Minutes">
+					<input type="number" class="form-control numeric" id="Duration" placeholder="30">
 				</div>
 
 				<div class="col-xs-4">
 					<label for="Pay">Pay</label>
-					<input type="number" class="form-control numeric" id="PP" placeholder="$">
+					<input type="number" class="form-control numeric" id="PP" placeholder="25">
 				</div>
 
 				<div class="col-xs-4">
 					<label for="Location">Location</label>
-					<input type="text" class="form-control" id="Location" placeholder="location">
+					<select class = "form-control" id = "Location">
+					  <option active = "active" value="Evanston">Evanston</option>
+					  <option value="Chicago">Chicago</option>
+					</select>
 				</div>
 			</div>
 		</div>
-
+		<!--
 		<div class="form-group">
 			<label for="URL">URL</label>
 			<input type="text" class="form-control" id="URL" placeholder="URL">
 		</div>
-
+		-->
 		<div class="form-group">
 			<label for="Contact">Contact</label>
-			<input type="text" class="form-control" id="Contact" placeholder="Email Address">
+			<input type="text" class="form-control" id="Contact" placeholder="Cool@StudyMoney.com">
 		</div>
-
+		<br>
 		<div>
-			<button type="submit" class="btn btn-primary btn-lg btn-block" id="submit">Submit</button>
+			<button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><span class = "buttontext">Submit</span></button>
 		</div>
 		<br>
 	</div>
-
+	<style>
+		label {
+			font-size: 3em;
+		}
+		.form-control {
+			height: auto;
+			font-size: 3em;
+		}
+	</style>
 
 
 
@@ -122,7 +133,7 @@
   	var dur =  $("#Duration").val() + " minutes";
   	var pp =  parseInt($("#PP").val());
   	var loc =  $("#Location").val();
-  	var url =  $("#URL").val();
+  	//var url =  $("#URL").val();
   	var con =  $("#Contact").val();
   	var len = parseInt($("#Duration").val());
 
@@ -136,7 +147,7 @@
   	testObject.set("duration", dur);
   	testObject.set("pay", pp);
   	testObject.set("location", loc);
-  	testObject.set("URL", url);
+  	//testObject.set("URL", url);
   	testObject.set("contact", con);
   	testObject.set("poster", un);
   	testObject.set("length", len);

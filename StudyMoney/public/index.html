@@ -23,16 +23,21 @@
 		<div class = "cardpadding">
 			<div class = "container-fluid card">
 				<a data-toggle="collapse" href="#collapse<%= objectId %>">
-          <div class="row row-xs-height">
-            <div class="col-xs-3 col-xs-height col-middle">
-              <br>
-              <% if (emailedStudy(objectId)) { %>
-                <span style="font-size:3em" class="glyphicon glyphicon-envelope"></span>
-              <% } else { %>
-                <br>
-              <% } %>
-            </div>
-          </div>
+				<br>
+		          <div class="row row-xs-height">
+		            <div class="col-xs-3 col-xs-height">
+		              <% if (emailedStudy(objectId)) { %>
+		                <span style="font-size:3em" class="glyphicon glyphicon-envelope"></span>
+		              <% } else { %>
+		                <br>
+		              <% } %>
+		            </div>
+					<div id = "delbutton" class = "col-xs-9 col-xs-height text-right">
+						<% if (username == poster) { %>
+						<button class="btn btn-danger" onclick="deleteCard('<%= objectId %>')"><span style = "font-size: 1.5em;">Delete</span></button>
+						<% } %>
+					</div>
+		          </div>
 					<div class = "row row-xs-height">     
 						<div class = "col-xs-3 col-xs-height col-middle">
 							<div class = "text-center pricecard">
@@ -41,15 +46,6 @@
 						</div>
 						<div class = "col-xs-9 col-xs-height">
 							<div class = "infocard">
-								<div class = "row">
-									<div class = "col-xs-9 col-xs-height">
-									</div>
-									<div id = "delbutton" class = "col-xs-3 col-xs-height">
-										<% if (username == poster) { %>
-										<button class="btn btn-primary btn-block" onclick="deleteCard('<%= objectId %>')"><span class = "buttontext">Delete</span></button>
-										<% } %>
-									</div>
-								</div>
 								<div class = "row">
 									<div class = "col-xs-12">
 										<span class = "cardTitle"><%= title %></span>
