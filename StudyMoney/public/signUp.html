@@ -65,8 +65,10 @@
     
     function signUp(){
      var user = new Parse.User();
+     var earray = [];
      user.set("username", $("#email input").val());
      user.set("password", $("#password input").val());
+     user.set("emailedStudies",earray);
 
      user.signUp(null, {
        success: function(user) {  
