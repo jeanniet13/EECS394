@@ -1,3 +1,4 @@
+<meta name="viewport" content="user-scalable=no" />
 <html>
 <head>
 	<!-- Credit to Shanimal on StackExchange for template code -->
@@ -102,6 +103,11 @@
   
     // bowyer
   //Parse.initialize("cDR7vqrOupZlqWhkrnneoEIIE5o6CWlNK893uj2n", "TrsU9ZYBIYWXWoNN4u8cV8WoQjG5BBw0bJPYBOrm");
+
+
+    function Redirect() {
+      window.location = "./index.html";
+    }
   var user = Parse.User.current();
   var un;
   if (user) {
@@ -152,10 +158,12 @@
   	testObject.set("poster", un);
   	testObject.set("length", len);
 
+
   	testObject.save(null, {
   		success: function(testObject) {
     		// Execute any logic that should take place after the object is saved.
     		alert('New object created with objectId: ' + testObject.id);
+        	setTimeout('Redirect()', 3000);
     	},
     	error: function(testObject, error) {
     		// Execute any logic that should take place if the save fails.

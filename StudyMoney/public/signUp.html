@@ -88,6 +88,8 @@
       },
       error: function(user, error) {
           // Login failed. Check error for reason.
+          // Show the error message somewhere and let the user try again.
+          alert("Error: " + error.code + " " + error.message);
         }
       });
   }

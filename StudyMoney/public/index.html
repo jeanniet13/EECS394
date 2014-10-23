@@ -10,7 +10,7 @@
 	<!-- Install jQuery and underscore -->
 	<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 	<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
-	<script src="https://www.parsecdn.com/js/parse-1.1.15.min.js"></script>
+	<script src="https://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -21,11 +21,11 @@
 			username = Parse.User.current().attributes.username;
 		} %>
 		<div class = "cardpadding">
-			<div class = "container-fluid card">
+			<div class = "container-fluid card" id = "<%= objectId %>">
 				<a data-toggle="collapse" href="#collapse<%= objectId %>">
 				<br>
 		          <div class="row row-xs-height">
-		            <div class="col-xs-3 col-xs-height">
+		            <div class="col-xs-3 col-xs-height" id = "mailicon">
 		              <% if (emailedStudy(objectId)) { %>
 		                <span style="font-size:3em" class="glyphicon glyphicon-envelope"></span>
 		              <% } else { %>
@@ -84,7 +84,7 @@
 					<br>
 					<div class = "row row-xs-height descriptionbuttonrow">
 						<div class = "col-xs-12 col-xs-height text-center">
-							<a target="_blank" onclick="studyEmailed('<%= objectId %>')" href="mailto:<%= contact %>?subject=<%= titleplus %>&body=I%20am%20interested%20in%20this%20study.%20What%20do%20I%20need%20to%20do%20next?"><button type="button" class="btn btn-primary btn-lg btn-block"><span class = "buttontext">E-Mail</span></button></a>
+							<a onclick="studyEmailed('<%= objectId %>')" href="mailto:<%= contact %>?subject=<%= titleplus %>&body=I%20am%20interested%20in%20this%20study.%20What%20do%20I%20need%20to%20do%20next?"><button type="button" class="btn btn-primary btn-lg btn-block"><span class = "buttontext">E-Mail</span></button></a>
 						</div>
 					</div>
 					<br>
@@ -148,7 +148,7 @@
         currentUser.addUnique("emailedStudies", studyID);
         currentUser.save(null, {
           success: function(User) {
-          window.location.reload();
+          		$("#"+studyID+" #mailicon").html("<span style=\"font-size:3em\" class=\"glyphicon glyphicon-envelope\"></span>");
           }
         });
       }
