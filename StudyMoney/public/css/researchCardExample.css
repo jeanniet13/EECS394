@@ -58,7 +58,7 @@ body {
     z-index: 1;
 	height: 150px;
 	width: 100%;
-	background-color: RGB(46,190,96);
+	background-color: #2DB2AA;
 }
 
 #titleimg {
@@ -100,6 +100,37 @@ body {
 .filtertext {
     font-size: 3em;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* vertical alignment styles */
 .col-top {

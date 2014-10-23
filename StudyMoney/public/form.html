@@ -12,7 +12,7 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 	<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
-	<script src="https://www.parsecdn.com/js/parse-1.1.15.min.js"></script>
+	<script src="https://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/jquery.numeric.js"></script>
 </head>
@@ -163,7 +163,7 @@
   		success: function(testObject) {
     		// Execute any logic that should take place after the object is saved.
     		alert('New object created with objectId: ' + testObject.id);
-        	setTimeout('Redirect()', 3000);
+        	setTimeout('Redirect()', 1000);
     	},
     	error: function(testObject, error) {
     		// Execute any logic that should take place if the save fails.
