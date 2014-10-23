@@ -21,7 +21,11 @@
 			username = Parse.User.current().attributes.username;
 		} %>
 		<div class = "cardpadding">
+		<% if (emailedStudy(objectId)) { %>
+			<div style = 'background-color: RGB(250,250,250)' class = "container-fluid card" id = "<%= objectId %>">
+		<% } else { %>
 			<div class = "container-fluid card" id = "<%= objectId %>">
+		<% } %>
 				<a data-toggle="collapse" href="#collapse<%= objectId %>">
 				<br>
 		          <div class="row row-xs-height">
