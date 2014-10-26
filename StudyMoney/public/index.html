@@ -65,11 +65,16 @@
 		                <br>
 		              <% } %>
 		            </div>
+		            <div id = "editbutton" class = "col-xs-9 col-xs-height text-right">
+						<% if (username == poster) { %>
+						<button class="btn btn-danger"><span style = "font-size: 1.5em;">Edit</span></button>
+						<% } %>
+					</div>
 					<div id = "delbutton" class = "col-xs-9 col-xs-height text-right">
 						<% if (username == poster) { %>
 						<button class="btn btn-danger" onclick="deleteCard('<%= objectId %>')"><span style = "font-size: 1.5em;">Delete</span></button>
 						<% } %>
-					</div>
+					</div>					
 		          </div>
 					<div class = "row row-xs-height">     
 						<div class = "col-xs-3 col-xs-height col-middle">
