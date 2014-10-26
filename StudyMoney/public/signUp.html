@@ -1,8 +1,10 @@
+
 <meta name="apple-mobile-web-app-capable" content="yes" />
+<meta content="telephone=no" name="format-detection" />
 <html>
 <head>
   <title>StudyMoney</title>    
-
+  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/jquery.mobile-1.4.4.min.css">
   <link rel="stylesheet" href="css/researchCardExample.css">
@@ -32,6 +34,9 @@
         },false);
       }
     })(document,window.navigator,'standalone');
+    document.addEventListener("touchmove", function(event){
+          event.preventDefault();
+    }, false);
     </script>
   <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
   <script type="text/javascript" src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
