@@ -174,63 +174,69 @@ var durationholder;
 	});
 
   $('#submit').click(function () {
+    if (user == null){
+      alert("You can't submit a study unless you're logged in!");
+      setTimeout('Redirect()', 1000);
+    }
+    else
+    {
+	    	// var valuesArr = ["Title","Description","Requirements","Duration", "PP", "Location", "URL", "Contact", "Duration"];
+	  	// valuesArr.forEach(function(value){
+	  	// 	var val = $("#"+value).val();
+	  	// 	if (value == "PP" || value == "Duration") {
+	  	// 		val = parseInt(val);
+	  	// 	}
+	  	// 	if (!val) {
+	  	// 		alert("Please fill in the " + value + " field");
+	  	// 	}
+	  	// });
+	  	var un = user.attributes.username;
+	  	var tt = $("#Title").val();
+	  	var des = $("#Description").val();
+	  	var req =  $("#Requirements").val();
+	  	if ($("#Duration").val()) {
+	  		var dur =  $("#Duration").val() + " minutes";
+	  		var len = parseInt($("#Duration").val());
+		} else {
+		  	var dur = "Variable";
+		  	var len;
+		}
+	  	var pp =  parseInt($("#PP").val());
+	  	var loc =  $("#Location").val();
+	  	//var url =  $("#URL").val();
+	  	var con =  $("#Contact").val();
+	  	
+
+	  	var TestObject = Parse.Object.extend("ResearchStudy");
+	  	var testObject = new TestObject();
+
+	  	testObject.set("user", user);
+	  	testObject.set("title", tt);
+	  	testObject.set("description", des);
+	  	testObject.set("requirements", req);
+	  	testObject.set("duration", dur);
+	  	testObject.set("pay", pp);
+	  	testObject.set("location", loc);
+	  	//testObject.set("URL", url);
+	  	testObject.set("contact", con);
+	  	testObject.set("poster", un);
+	  	testObject.set("length", len);
 
 
-  	// var valuesArr = ["Title","Description","Requirements","Duration", "PP", "Location", "URL", "Contact", "Duration"];
-  	// valuesArr.forEach(function(value){
-  	// 	var val = $("#"+value).val();
-  	// 	if (value == "PP" || value == "Duration") {
-  	// 		val = parseInt(val);
-  	// 	}
-  	// 	if (!val) {
-  	// 		alert("Please fill in the " + value + " field");
-  	// 	}
-  	// });
-  	var un = user.attributes.username;
-  	var tt = $("#Title").val();
-  	var des = $("#Description").val();
-  	var req =  $("#Requirements").val();
-  	if ($("#Duration").val()) {
-  		var dur =  $("#Duration").val() + " minutes";
-  		var len = parseInt($("#Duration").val());
-	} else {
-	  	var dur = "Variable";
-	  	var len;
-	}
-  	var pp =  parseInt($("#PP").val());
-  	var loc =  $("#Location").val();
-  	//var url =  $("#URL").val();
-  	var con =  $("#Contact").val();
+	  	testObject.save(null, {
+	  		success: function(testObject) {
+	    		// Execute any logic that should take place after the object is saved.
+	    		alert('New object created with objectId: ' + testObject.id);
+	        	setTimeout('Redirect()', 1000);
+	    	},
+	    	error: function(testObject, error) {
+	    		// Execute any logic that should take place if the save fails.
+	    		// error is a Parse.Error with an error code and message.
+	    		alert('Failed to create new object, with error code: ' + error.id);
+	    	}
+	    });
+    }
   	
-
-  	var TestObject = Parse.Object.extend("ResearchStudy");
-  	var testObject = new TestObject();
-
-  	testObject.set("user", user);
-  	testObject.set("title", tt);
-  	testObject.set("description", des);
-  	testObject.set("requirements", req);
-  	testObject.set("duration", dur);
-  	testObject.set("pay", pp);
-  	testObject.set("location", loc);
-  	//testObject.set("URL", url);
-  	testObject.set("contact", con);
-  	testObject.set("poster", un);
-  	testObject.set("length", len);
-
-
-  	testObject.save(null, {
-  		success: function(testObject) {
-    		// Execute any logic that should take place after the object is saved.
-    		alert('New object created with objectId: ' + testObject.id);
-        	setTimeout('Redirect()', 1000);
-    	},
-    	error: function(testObject, error) {
-    		// Execute any logic that should take place if the save fails.
-    		// error is a Parse.Error with an error code and message.
-    		alert('Failed to create new object, with error code: ' + error.id);
-    	}
-    });
   });
 </script>
 </body>
