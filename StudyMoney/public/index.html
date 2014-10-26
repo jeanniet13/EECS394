@@ -301,7 +301,7 @@
       		success: function(object) {
       			if (_.isEqual(object.attributes.poster, Parse.User.current().attributes.username)){
 					object.destroy({});
-					alert("Card");
+					//alert("Card");
 	      			window.location.reload();
 
       			} else {
