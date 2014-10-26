@@ -21,9 +21,14 @@
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/researchCardExample.css">
+<<<<<<< HEAD
     
 	
 	<!-- Prevent links open in safair in standalone -->
+=======
+
+	
+>>>>>>> FETCH_HEAD
 	<script type="text/javascript">
   		(function(document,navigator,standalone) {
 			// prevents links from apps from oppening in mobile safari
@@ -50,7 +55,10 @@
 			}
 		})(document,window.navigator,'standalone');
     </script>
+<<<<<<< HEAD
     
+=======
+>>>>>>> FETCH_HEAD
     <!-- Install jQuery and underscore -->
 	<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 	<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
@@ -67,7 +75,7 @@
 		} %>
 		<div class = "cardpadding">
 		<% if (emailedStudy(objectId)) { %>
-			<div style = 'background-color: RGB(250,250,250)' class = "container-fluid card" id = "<%= objectId %>">
+			<div class = "container-fluid emailedCard" id = "<%= objectId %>">
 		<% } else { %>
 			<div class = "container-fluid card" id = "<%= objectId %>">
 		<% } %>
@@ -81,11 +89,16 @@
 		                <br>
 		              <% } %>
 		            </div>
+		            <div id = "editbutton" class = "col-xs-9 col-xs-height text-right">
+						<% if (username == poster) { %>
+						<button class="btn btn-danger"><span style = "font-size: 1.5em;">Edit</span></button>
+						<% } %>
+					</div>
 					<div id = "delbutton" class = "col-xs-9 col-xs-height text-right">
 						<% if (username == poster) { %>
 						<button class="btn btn-danger" onclick="deleteCard('<%= objectId %>')"><span style = "font-size: 1.5em;">Delete</span></button>
 						<% } %>
-					</div>
+					</div>					
 		          </div>
 					<div class = "row row-xs-height">     
 						<div class = "col-xs-3 col-xs-height col-middle">
