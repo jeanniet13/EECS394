@@ -197,4 +197,28 @@ body {
         display:table-cell;
         float:none;
     }
-}*/
+}
+
+
+
+
+
+
+
+
+div#Ampersand {
+  background: url('AmpersandBurned.png');
+  width:43px;
+  height:97px;
+  float:left;
+  -webkit-background-size: 43px 97px;
+}
+
+@media screen and (-webkit-device-pixel-ratio: 2) {
+  div#Ampersand {
+    background: url('AmpersandBurned@2x.png');
+    width:43px;
+    height:97px;
+    float:left;
+  }
+}
