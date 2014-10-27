@@ -207,7 +207,6 @@
         currentUser.addUnique("emailedStudies", studyID);
         currentUser.save(null, {
           success: function(User) {
-          	    localStorage.setItem("z", currentUser.attributes["emailedStudies"]);
           		$("#"+studyID+" #mailicon").html("<span style=\"font-size:3em\" class=\"glyphicon glyphicon-envelope\"></span>");
           			
           }
