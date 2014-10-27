@@ -1,8 +1,10 @@
 
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta content="telephone=no" name="format-detection" />
 <html>
 <head>
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta content="telephone=no" name="format-detection" />
+
   <title>StudyMoney</title>    
   
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -119,6 +121,8 @@
    function logIn() {
     Parse.User.logIn($("#email input").val(), $("#password input").val(), {
       success: function(user) {
+        localStorage.setItem("emailInput", $("#email input").val());
+          localStorage.setItem("passwordInput",$("#password input").val());
         alert("Login successful, redirecting to home page.");
         Redirect();
       },
