@@ -1,7 +1,9 @@
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta content="telephone=no" name="format-detection" />
+
 <html>
 <head>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta content="telephone=no" name="format-detection" />
+
 	<!-- Credit to Shanimal on StackExchange for template code -->
 	<title>StudyMoney</title>
 
@@ -25,30 +27,30 @@
 	
 	<!-- Prevent links open in safair in standalone -->
 	<script type="text/javascript">
-  		(function(document,navigator,standalone) {
-			// prevents links from apps from oppening in mobile safari
-			// this javascript must be the first script in your <head>
-			if ((standalone in navigator) && navigator[standalone]) {
-				var curnode, location=document.location, stop=/^(a|html)$/i;
-				document.addEventListener('click', function(e) {
-					curnode=e.target;
-					while (!(stop).test(curnode.nodeName)) {
-						curnode=curnode.parentNode;
-					}
-					// Condidions to do this only on links to your own app
-					// if you want all links, use if('href' in curnode) instead.
-					if(
-						'href' in curnode && // is a link
-						(chref=curnode.href).replace(location.href,'').indexOf('#') && // is not an anchor
-						(	!(/^[a-z\+\.\-]+:/i).test(chref) ||                       // either does not have a proper scheme (relative links)
-							chref.indexOf(location.protocol+'//'+location.host)===0 ) // or is in the same protocol and domain
-					) {
-						e.preventDefault();
-						location.href = curnode.href;
-					}
-				},false);
-			}
-		})(document,window.navigator,'standalone');
+  (function(document,navigator,standalone) {
+      // prevents links from apps from oppening in mobile safari
+      // this javascript must be the first script in your <head>
+      if ((standalone in navigator) && navigator[standalone]) {
+        var curnode, location=document.location, stop=/^(a|html)$/i;
+        document.addEventListener('click', function(e) {
+          curnode=e.target;
+          while (!(stop).test(curnode.nodeName)) {
+            curnode=curnode.parentNode;
+          }
+          // Condidions to do this only on links to your own app
+          // if you want all links, use if('href' in curnode) instead.
+          if(
+            'href' in curnode && // is a link
+            (chref=curnode.href).replace(location.href,'').indexOf('#') && // is not an anchor
+            ( !(/^[a-z\+\.\-]+:/i).test(chref) ||                       // either does not have a proper scheme (relative links)
+              chref.indexOf(location.protocol+'//'+location.host)===0 ) // or is in the same protocol and domain
+          ) {
+            e.preventDefault();
+            location.href = curnode.href;
+          }
+        },false);
+      }
+    })(document,window.navigator,'standalone');
     </script>
     <!-- Install jQuery and underscore -->
 	<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
@@ -137,7 +139,7 @@
 					<br>
 					<div class = "row row-xs-height descriptionbuttonrow">
 						<div class = "col-xs-12 col-xs-height text-center">
-							<a onclick="studyEmailed('<%= objectId %>')" href="mailto:<%= contact %>?subject=<%= titleplus %>&body=I%20am%20interested%20in%20this%20study.%20What%20do%20I%20need%20to%20do%20next?"><button type="button" class="btn btn-primary btn-lg btn-block"><span class = "buttontext">E-Mail</span></button></a>
+							<a onclick="studyEmailed('<%= objectId %>')" href="mailto:<%= contact %>?subject=<%= titleplus %>&body=I%20am%20interested%20in%20this%20study.%20What%20do%20I%20need%20to%20do%20next?"><button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#myModal"><span class = "buttontext">E-Mail</span></button></a>
 						</div>
 					</div>
 					<br>
@@ -164,14 +166,17 @@
 	<div class = "filters">
 		<div class="btn-group">
 			<div class = "row row-xs-height">
-				<div class = "col-xs-4 col-xs-height">
+				<div class = "col-xs-3 col-xs-height">
 					<button id="pay" class="btn btn-primary btn-lg btn-block" onclick="redrawCards('pay')"><span class = "filtertext">Pay</span></button>
 				</div>
-				<div class = "col-xs-4 col-xs-height">
+				<div class = "col-xs-3 col-xs-height">
 					<button id="updatedAt" class="btn btn-primary btn-lg btn-block" onclick="redrawCards('updatedAt')"><span class = "filtertext">Recent</span></button>
 				</div>
-				<div class = "col-xs-4 col-xs-height">
+				<div class = "col-xs-3 col-xs-height">
 					<button id="duration" class="btn btn-primary btn-lg btn-block" onclick="redrawCards('duration')"><span class = "filtertext">Duration</span></button>
+				</div>
+				<div class = "col-xs-3 col-xs-height">
+					<button id="reload" class="btn btn-primary btn-lg btn-block" onclick="reload()"><span class = "filtertext">Reload</span></button>
 				</div>
 			</div>
 		</div>
@@ -184,27 +189,29 @@
 	<!-- Some code to fetch the data and apply template -->
 
 	<script type="text/javascript">
-    // Dev
+	    // Dev
 		Parse.initialize("DHajCy3H3C742pNLXqTPJUtsGqZ14Nqdysx9F7BP", "Ya92oZaK0PGflE5o2uHIcGauuowRxpRaUrPvspvm");
     // Production
 	//	Parse.initialize("2Adfr8LRfl5VwX8WgHQHRKZo6GpNcsiUvdBXoBya", "xGwCwmFcuKXxI9JwDuRcJs8uch6UMQAYPre18dzH");
 
 		var currentUser = Parse.User.current();
 		if (currentUser) {
-		    $("#username").html("<button onclick=\"Parse.User.logOut();location.reload();\" class =\"btn btn-primary btn-lg\"><span class = \"buttontext\">Log Out</span></button>");
+		    $("#username").html("<button onclick=\"localStorage.removeItem('emailInput');localStorage.removeItem('passwordInput');Parse.User.logOut();location.reload();\" class =\"btn btn-primary btn-lg\"><span class = \"buttontext\">Log Out</span></button>");
 		} else {
 		    $("#username").html("<a href = \"signUp.html\"><button class =\"btn btn-primary btn-lg\"><span class = \"buttontext\">Log In</span></button></a>");
 		}
 
     function studyEmailed(studyID) {
+    event.stopPropagation();
       if (currentUser) {
         currentUser.addUnique("emailedStudies", studyID);
         currentUser.save(null, {
           success: function(User) {
           		$("#"+studyID+" #mailicon").html("<span style=\"font-size:3em\" class=\"glyphicon glyphicon-envelope\"></span>");
+          			
           }
         });
-      }
+       }
     }
 
     function emailedStudy(studyID) {
@@ -216,6 +223,22 @@
         }
       }
     }
+
+    function reload() {
+    		Parse.User.logOut;
+    		Parse.User.logIn(localStorage.getItem("emailInput"),localStorage.getItem("passwordInput"), {
+      			success: function(user) {
+      				var currentUser = Parse.User.current();
+      				window.location.reload();
+      			},
+      			error: function(user, error) {
+      				window.location.reload();
+        		}
+      		});
+
+    	
+  }
+    
 
 		var temp = $("#studyCard").html();
 		var us_temp = _.template(temp);
