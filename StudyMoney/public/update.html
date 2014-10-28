@@ -149,7 +149,11 @@
 				// error is a Parse.Error with an error code and message.
 			}
 		});
-		
+
+		function Redirect() {
+      		window.location = "./index.html";
+    	}
+
 		function loadstuff() {
 			document.getElementById("Title").value = study.get("title");
 			document.getElementById("Description").value = study.get("description");
@@ -211,6 +215,8 @@
 					alert('Failed to create new object, with error code: ' + error.id);
 				}
 			});
+
+			setTimeout('Redirect()', 250);
 		});
 
 	</script>
