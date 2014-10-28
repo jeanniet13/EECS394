@@ -1,8 +1,6 @@
-
+<meta name="apple-mobile-web-app-capable" content="yes" />
 <html>
 <head>
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-<meta content="telephone=no" name="format-detection" />
 	<!-- Credit to Shanimal on StackExchange for template code -->
 	<title>StudyMoney - Posting Form</title>
 
@@ -12,7 +10,7 @@
 
 	<!-- Prevent links open in safair in standalone -->
   <script type="text/javascript">
-  (function(document,navigator,standalone) {
+    (function(document,navigator,standalone) {
       // prevents links from apps from oppening in mobile safari
       // this javascript must be the first script in your <head>
       if ((standalone in navigator) && navigator[standalone]) {
@@ -39,7 +37,7 @@
     document.addEventListener("touchmove", function(event){
           event.preventDefault();
     }, false);
-    </script>
+  </script>
 
     <!-- Install jQuery and underscore -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -226,7 +224,7 @@ var durationholder;
 	  	testObject.save(null, {
 	  		success: function(testObject) {
 	    		// Execute any logic that should take place after the object is saved.
-	    		alert('New object created with objectId: ' + testObject.id);
+	    		//alert('New object created with objectId: ' + testObject.id);
 	        	setTimeout('Redirect()', 1000);
 	    	},
 	    	error: function(testObject, error) {
