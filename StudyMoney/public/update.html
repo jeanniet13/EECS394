@@ -49,19 +49,23 @@
 		<div class="form-group">
 			<div class="row">
 				<div class="col-xs-4">
-					<label for="Duration">Duration</label>
-					<input type="number" class="form-control numeric" id="Duration">
+					<label for="Duration">Duration<br>(Minutes)</label>
+					<input type="number" class="form-control numeric" id="Duration" placeholder="30">
+					<br>
+					<center><button id = "variablebutton" class = "btn btn-default">
+						<span style = "font-size: 2.5em">Variable Length</span>
+					</button></center>
 				</div>
 
 				<div class="col-xs-4">
-					<label for="Pay">Pay</label>
-					<input type="number" class="form-control numeric" id="PP">
+					<label for="Pay">Pay<br>($)</label>
+					<input type="number" class="form-control numeric" id="PP" placeholder="25">
 				</div>
 
 				<div class="col-xs-4">
-					<label for="Location">Location</label>
-					<select class = "form-control" id="Location">
-					  <option active="active" value="Evanston">Evanston</option>
+					<label for="Location">Location<br>(Campus)</label>
+					<select class = "form-control" id = "Location">
+					  <option active = "active" value="Evanston">Evanston</option>
 					  <option value="Chicago">Chicago</option>
 					</select>
 				</div>
@@ -74,7 +78,7 @@
 		</div>
 		-->
 		<div class="form-group">
-			<label for="Contact">Contact</label>
+			<label for="Contact">Contact<br>(E-Mail)</label>
 			<input type="text" class="form-control" id="Contact">
 		</div>
 		<br>
@@ -101,6 +105,7 @@
 		
 			// bowyer
 		//Parse.initialize("cDR7vqrOupZlqWhkrnneoEIIE5o6CWlNK893uj2n", "TrsU9ZYBIYWXWoNN4u8cV8WoQjG5BBw0bJPYBOrm");
+		var durationholder;
 		var user = Parse.User.current();
 		var un;
 		if (user) {
@@ -111,7 +116,22 @@
 			$("#username").html("<a href = \"signUp.html\"><button class =\"btn btn-primary btn-lg\"><span class = \"buttontext\">Log In</span></button></a>");
 		}
 		$("input.numeric").numeric();
-
+		
+	$("#variablebutton").click(function() {
+	    if($( "#Duration" ).attr( "disabled") != "disabled") {
+	        $( "#Duration" ).attr( "disabled", "disabled");
+	        durationholder = $("#Duration").val();
+	        $("#Duration").val("");
+	        $( "#Duration" ).attr( "placeholder", "Variable" );
+	        $("#variablebutton").addClass("active");
+	    } else {
+	    	$( "#Duration" ).removeAttr( "disabled");
+	    	$("#Duration").val(durationholder);
+	    	$( "#Duration" ).attr( "placeholder", "30" );
+	    	$("#variablebutton").removeClass("active");
+	    }
+	});		
+		
 		var oid = location.search.split('objectID=')[1]
 		var ResearchStudy = Parse.Object.extend("ResearchStudy");
 		var query = new Parse.Query(ResearchStudy);
@@ -134,7 +154,20 @@
 			document.getElementById("Title").value = study.get("title");
 			document.getElementById("Description").value = study.get("description");
 			document.getElementById("Requirements").value = study.get("requirements");
-			document.getElementById("Duration").value = study.get("duration");
+			if (study.get("length")) {
+				$( "#Duration" ).removeAttr( "disabled");
+				$("#Duration").val(durationholder);
+				$( "#Duration" ).attr( "placeholder", "30" );
+				$("#variablebutton").removeClass("active");
+				document.getElementById("Duration").value = study.get("length");
+			} else {
+				$( "#Duration" ).attr( "disabled", "disabled");
+				durationholder = $("#Duration").val();
+				$("#Duration").val("");
+				$( "#Duration" ).attr( "placeholder", "Variable" );
+				$("#variablebutton").addClass("active");
+			}
+
 			document.getElementById("PP").value = study.get("pay");
 			document.getElementById("Location").value = study.get("location");
 			document.getElementById("Contact").value = study.get("contact");
@@ -145,11 +178,16 @@
 			var tt = $("#Title").val();
 			var des = $("#Description").val();
 			var req =  $("#Requirements").val();
-			var dur =  $("#Duration").val() + " minutes";
+	  	if ($("#Duration").val()) {
+	  		var dur =  $("#Duration").val() + " minutes";
+	  		var len = parseInt($("#Duration").val());
+		} else {
+		  	var dur = "Variable";
+		  	var len = null;
+		}
 			var pp =  parseInt($("#PP").val());
 			var loc =  $("#Location").val();
 			var con =  $("#Contact").val();
-			var len = parseInt($("#Duration").val());
 
 			study.set("user", user);
 			study.set("title", tt);
